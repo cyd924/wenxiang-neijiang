@@ -1,0 +1,9 @@
+{
+  "name": "wenban-yinling",
+  "version": "0.1.0",
+  "private": true,
+  "description": "文享内江：内江市文化馆课程预约小程序本地原型",
+  "scripts": {"start": "node server/index.js", "test": "node --test"},
+  "engines": {"node": ">=22"}
+}
+

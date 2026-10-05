@@ -1,0 +1,20 @@
+{
+  "$schema": "https://unpkg.com/wrangler@latest/config-schema.json",
+  "name": "wenxiang-neijiang",
+  "main": "cloudflare/worker.js",
+  "compatibility_date": "2026-10-05",
+  "assets": {
+    "directory": "./web",
+    "binding": "ASSETS",
+    "not_found_handling": "single-page-application"
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "wenxiang-neijiang-db",
+      "database_id": "6536d6ca-b728-47ce-b308-366e24d7d027",
+      "migrations_dir": "./cloudflare/migrations"
+    }
+  ],
+  "observability": { "enabled": true }
+}
