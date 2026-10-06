@@ -28,7 +28,7 @@ npm start
 - `web/`：浏览器居民端和管理员端页面
 - `server/`：本地 Node.js 服务和 SQLite 数据库逻辑
 - `miniprogram/`：原生微信小程序目录，可导入微信开发者工具
-- `cloudflare/worker.js`：Cloudflare Worker 入口，内嵌浏览器页面并绑定 D1
+- `cloudflare/worker.js`：Cloudflare Worker 入口，使用 Workers Assets 托管页面并绑定 D1
 - `cloudflare/migrations/0001_init.sql`：D1 表结构和 12 门演示课程
 - `docs/sample-courses.csv`：管理员批量导入示例
 - `tests/api.test.js`：本地接口测试
@@ -38,13 +38,14 @@ npm start
 本项目线上 Worker 使用 D1 数据库 `wenxiang-neijiang-db`。重新部署时可使用 Wrangler：
 
 ```bash
+node cloudflare/build-assets.cjs
 npx wrangler deploy
 ```
 
 D1 初始化：
 
 ```bash
-npx wrangler d1 execute wenxiang-neijiang-db --remote --file=cloudflare/migrations/0001_init.sql
+npx wrangler d1 migrations apply wenxiang-neijiang-db --remote
 ```
 
 AI 模型使用 OpenAI 兼容接口时，只把配置保存为 Worker Secret，不要写入前端或 Git：
@@ -73,3 +74,9 @@ npm test
 ```
 
 本地测试覆盖重复报名、时间冲突、取消权限、候补、课程状态、输入校验和规则推荐回退等场景。
+
+## 线上验收（2026-10-06）
+
+公网 17 项检查通过，本地 Node.js 和 Worker 共 13 项测试通过。数据库触发器在写入时检查剩余名额、重复报名和所有上课时间，取消后按候补顺序选择没有冲突的用户递补。详见 `docs/cloudflare-test-report.md`。
+
+原生小程序默认连接上述公网地址。本地联调时将 `miniprogram/app.js` 中的 `apiBase` 改为本地服务地址。演示 userId 尚未接入微信登录。

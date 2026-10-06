@@ -1,1 +1,1 @@
-App({globalData:{apiBase:'http://localhost:3000',userId:1},onLaunch(){}})
+App({globalData:{apiBase:'https://wenxiang-neijiang.wenxiang-neijiang.workers.dev',userId:1},onLaunch(){}})

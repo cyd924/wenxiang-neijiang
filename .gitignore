@@ -4,3 +4,9 @@ node_modules/
 outputs/
 work/
 .DS_Store
+
+.wrangler/
+.dev.vars
+.dev.vars.*
+.env.local
+*.db-*
