@@ -1,7 +1,8 @@
 # Cloudflare 部署说明
 
 - GitHub：https://github.com/cyd924/wenxiang-neijiang
-- 公网：https://wenxiang-neijiang.wenxiang-neijiang.workers.dev
+- 主要演示地址（用户已确认微信可打开）：https://wenxiang-neijiang.pages.dev
+- 原 Workers 地址（用户手机无法显示）：https://wenxiang-neijiang.wenxiang-neijiang.workers.dev
 - 健康检查：上述地址加 `/api/health`
 - Worker：`wenxiang-neijiang`
 - D1：`wenxiang-neijiang-db`
@@ -9,6 +10,8 @@
 - Cloudflare 账户 ID：`e21cb5df086a65fc8dabc9c083f1b9de`
 
 居民端、管理端由 Workers Assets 托管，API 由同一个 Worker 处理并绑定 D1。`/api/*` 始终先交给 Worker，避免单页回退把 API 错误变成首页。
+
+以上描述及下方部署命令针对原 Workers 版本。现在主要演示入口采用 Pages，直接运行同一 API 并绑定同一 D1；构建、发布和实测记录见 `pages-deploy.md`。两个入口分别部署，更新其中一个不会自动更新另一个。
 
 ## 重新部署
 

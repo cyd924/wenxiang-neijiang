@@ -6,11 +6,16 @@
 
 ## 在线演示
 
-- 居民端：<https://wenxiang-neijiang.wenxiang-neijiang.workers.dev>
-- 健康检查：<https://wenxiang-neijiang.wenxiang-neijiang.workers.dev/api/health>
+- 居民端（用户已确认微信可打开）：<https://wenxiang-neijiang.pages.dev>
+- 健康检查：<https://wenxiang-neijiang.pages.dev/api/health>
 - 管理员入口：打开居民端后点击“管理员”
+- 原 Workers 入口（用户手机网络无法显示）：<https://wenxiang-neijiang.wenxiang-neijiang.workers.dev>
 
 当前线上 AI 未配置密钥，智能找课显示“规则模式”。课程筛选、冲突检查、名额和候补由 Worker 本地逻辑完成。
+
+访问状态（2026-10-06）：用户确认 Pages 地址在手机微信内可打开，现作为主要演示入口。原 Workers 地址仍存在用户手机网络访问问题；具体复查结果见 `docs/cloudflare-test-report.md`。
+
+Pages 入口使用同一份 API 和 D1 数据库，页面与接口都位于 `pages.dev` 域名；没有把 API 转发到原来无法访问的 `workers.dev` 地址。小程序默认接口地址也已同步到 Pages。用户确认打开成功尚不等于所有手机交互流程已完成验收。构建和部署说明见 `docs/pages-deploy.md`。
 
 ## 本地运行
 

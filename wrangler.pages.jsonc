@@ -1,0 +1,13 @@
+{
+  "$schema": "https://unpkg.com/wrangler@latest/config-schema.json",
+  "name": "wenxiang-neijiang",
+  "pages_build_output_dir": "./work/pages",
+  "compatibility_date": "2026-10-06",
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "wenxiang-neijiang-db",
+      "database_id": "6536d6ca-b728-47ce-b308-366e24d7d027"
+    }
+  ]
+}
