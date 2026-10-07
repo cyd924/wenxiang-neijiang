@@ -3,6 +3,7 @@
   "name": "wenxiang-neijiang",
   "main": "cloudflare/worker.js",
   "compatibility_date": "2026-10-06",
+  "ai": { "binding": "AI" },
   "assets": {
     "directory": "./web",
     "binding": "ASSETS",

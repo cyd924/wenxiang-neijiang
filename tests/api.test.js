@@ -1,6 +1,7 @@
 const test=require('node:test');
 const assert=require('node:assert/strict');
 process.env.PORT='3011';
+process.env.AI_REMOTE_URL='off';
 const {server,db}=require('../server/index');
 const base='http://localhost:3011';
 const post=async(path,data)=>{const r=await fetch(base+path,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(data)});return {status:r.status,data:await r.json()}};
